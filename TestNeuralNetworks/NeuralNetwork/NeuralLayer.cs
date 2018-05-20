@@ -42,7 +42,7 @@ namespace TestNeuralNetworks.NeuralNetwork
         private void InitWeights() {
             for (int i = 0; i < outputNum; i++) {
                 for (int j = 0; j < inputNum; j++) {
-                    weights[i, j] = (float)rand.NextDouble();
+                    weights[i, j] = (float)rand.NextDouble() - 0.5f;
                 }
             }
         }
