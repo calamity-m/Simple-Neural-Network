@@ -13,7 +13,7 @@ namespace TestNeuralNetworks
         {
 
             Console.WriteLine("Hello");
-            NeuralNet neuralNetwork = new NeuralNet(new int[] { 3, 25, 1 }, 0.0333f);
+            NeuralNet neuralNetwork = new NeuralNet(new int[] { 3, 35, 1 }, 0.0333f, 1345);
             int epochs = 5000;
 
             for (int i = 0; i < epochs; i++) {
@@ -32,8 +32,14 @@ namespace TestNeuralNetworks
                 neuralNetwork.FeedForward(new float[] { 1, 1, 0 });
                 neuralNetwork.BackPropagation(new float[] { 0 });
 
+                neuralNetwork.FeedForward(new float[] { 0, 1, 1 });
+                neuralNetwork.BackPropagation(new float[] { 0 });
+
                 neuralNetwork.FeedForward(new float[] { 1, 0, 1 });
                 neuralNetwork.BackPropagation(new float[] { 0 });
+
+                neuralNetwork.FeedForward(new float[] { 1, 1, 1 });
+                neuralNetwork.BackPropagation(new float[] { 1 });
             }
 
 

@@ -11,14 +11,14 @@ namespace TestNeuralNetworks.NeuralNetwork
         NeuralLayer[] layers;
         public float learningRate;
 
-        public NeuralNet(int[] topology, float lRate) {
+        public NeuralNet(int[] topology, float lRate, int seed) {
 
             layers = new NeuralLayer[topology.Length - 1];
             learningRate = lRate;
 
             for (int i = 0; i < layers.Length; i++)
             {
-                layers[i] = new NeuralLayer(topology[i], topology[i + 1], learningRate);
+                layers[i] = new NeuralLayer(topology[i], topology[i + 1], learningRate, seed);
             }
 
         }

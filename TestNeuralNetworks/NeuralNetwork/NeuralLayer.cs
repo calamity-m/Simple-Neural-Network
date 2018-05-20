@@ -16,7 +16,7 @@ namespace TestNeuralNetworks.NeuralNetwork
         // Number of outputs we have
         private int outputNum;
 
-        private Random rand = new Random(1);
+        private Random rand;
 
         public float learningRate;
         public float[] inputs;
@@ -25,7 +25,7 @@ namespace TestNeuralNetworks.NeuralNetwork
         public float[,] weights;
         public float[,] deltaWeights;
 
-        public NeuralLayer(int inputNum, int outputNum, float learningRate) {
+        public NeuralLayer(int inputNum, int outputNum, float learningRate, int seed) {
             this.inputNum = inputNum;
             this.outputNum = outputNum;
             this.learningRate = learningRate;
@@ -34,6 +34,7 @@ namespace TestNeuralNetworks.NeuralNetwork
             weights = new float[outputNum, inputNum];
             deltaWeights = new float[outputNum, inputNum];
             gamma = new float[outputNum];
+            rand = new Random(seed);
 
             InitWeights();
         }
