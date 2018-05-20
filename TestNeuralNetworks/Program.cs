@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestNeuralNetworks.NeuralNetwork;
 
 namespace TestNeuralNetworks
 {
@@ -10,6 +11,56 @@ namespace TestNeuralNetworks
     {
         static void Main(string[] args)
         {
+
+            Console.WriteLine("Hello");
+            NeuralNet neuralNetwork = new NeuralNet(new int[] { 3, 25, 1 }, 0.0333f);
+            int epochs = 5000;
+
+            for (int i = 0; i < epochs; i++) {
+                neuralNetwork.FeedForward(new float[] { 0, 0, 0 });
+                neuralNetwork.BackPropagation(new float[] { 0 });
+
+                neuralNetwork.FeedForward(new float[] { 0, 0, 1 });
+                neuralNetwork.BackPropagation(new float[] { 1 });
+
+                neuralNetwork.FeedForward(new float[] { 0, 1, 0 });
+                neuralNetwork.BackPropagation(new float[] { 1 });
+
+                neuralNetwork.FeedForward(new float[] { 1, 0, 0 });
+                neuralNetwork.BackPropagation(new float[] { 1 });
+
+                neuralNetwork.FeedForward(new float[] { 1, 1, 0 });
+                neuralNetwork.BackPropagation(new float[] { 0 });
+
+                neuralNetwork.FeedForward(new float[] { 1, 0, 1 });
+                neuralNetwork.BackPropagation(new float[] { 0 });
+            }
+
+
+            float[] result = neuralNetwork.FeedForward(new float[] { 0, 0, 0 });
+            PrintFloatArray(result);
+            result = neuralNetwork.FeedForward(new float[] { 1, 0, 0 });
+            PrintFloatArray(result);
+            result = neuralNetwork.FeedForward(new float[] { 1, 1, 0 });
+            PrintFloatArray(result);
+            result = neuralNetwork.FeedForward(new float[] { 0, 0, 0 });
+            PrintFloatArray(result);
+            result = neuralNetwork.FeedForward(new float[] { 1, 1, 1 });
+            PrintFloatArray(result);
+            result = neuralNetwork.FeedForward(new float[] { 1, 1, 1 });
+            PrintFloatArray(result);
+            result = neuralNetwork.FeedForward(new float[] { 0, 1, 0 });
+            PrintFloatArray(result);
+
+            Console.WriteLine("Finished");
+        }
+
+        public static void PrintFloatArray(float[] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+                Console.Write(arr[i] + " ");
+
+            Console.WriteLine("");
         }
     }
 }
